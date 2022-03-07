@@ -246,12 +246,19 @@ button:hover{
     width:100%;
     color:white;
     position:relative;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
 }
 
 .title{
     padding-left:20px;
-    position:absolute;
-    bottom:5px;
+    padding-bottom:5px;
+}
+
+.new-courseflow{
+    padding-bottom:5px;
+    padding-right:5px;
 }
 
 .title *{
