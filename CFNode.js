@@ -91,7 +91,9 @@ class CFNode {
     }
     
     toJSON(json){
-        json.node.push({id:this.id,title:this.name,description:this.text,context_classification:this.lefticon,task_classification:this.righticon,colour:this.colour,workflow:this.wf.id,time_required:this.time.value,time_units:this.time.unit,linked_workflow:this.linkedWF,column:this.column});
+        let autoLinkOut = true;
+        if(!this.autoLinkOut)autoLinkOut=false;
+        json.node.push({id:this.id,title:this.name,description:this.text,context_classification:this.lefticon,task_classification:this.righticon,colour:this.colour,workflow:this.wf.id,time_required:this.time.value,time_units:this.time.unit,linked_workflow:this.linkedWF,column:this.column,has_autolink:autoLinkOut});
         for(let i=0;i<this.fixedLinksOut.length;i++){
             this.fixedLinksOut[i].toJSON(json);
         }
@@ -771,7 +773,7 @@ class WFLink{
     }
     
     toJSON(json){
-        json.nodelink.push({source:this.node.id,target:this.id,title:this.text,style:this.style});
+        json.nodelink.push({source:this.node.id,target:this.id,title:this.text,style:this.style,ports:this.portStyle});
     }
     
     fromXML(xml){
